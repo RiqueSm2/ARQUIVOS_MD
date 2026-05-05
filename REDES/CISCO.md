@@ -64,3 +64,12 @@ ARCHIVE -> VOCE CONSEGUE GUARDAR VERSOES, AO CONTRARIO DO KRON QUE SUBSTITUI
 (config-archive)#write-memory - > salve sempre uma versao diferente
 (config-archive)#time-period 1
 
+# ATUALIZAÇÃO IOS
+É recomendavel fazer um backup da memoria flash
+NY_R1#show flash -> mostra a memoria flash
+NY_R1#delete flash <nome flash> -> Opcinal: deletar memoria flash atual
+Apos copiar a nova memoria flash, salvar e reiniciar o equipamento para entrar em vigor
+
+Caso haja mais de um flash na memoria, definir com:
+(config)boot system flash <nome flash>
+
