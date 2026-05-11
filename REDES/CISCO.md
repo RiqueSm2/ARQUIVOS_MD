@@ -40,3 +40,36 @@ Formas de backup:
 1. Roteador mandando o backup para um servidor TFTP ou FTP.
 2. KRON JOB -> O KRON é um recurso do IOS da CISCO que permite agendar tarefas, como por exemplo, fazer backup de configurações de roteadores e switches.
 3. ARCHIVE  -> VARIAS CONFIGS DE BACKUP, COM DATA E HORA, PARA VOLTAR A QUALQUER MOMENTO.
+
+# CONECTIVIDADE TFTP
+COPY TFTP -> PROCESSO MANUAL
+NY_R1#copy running-config tftp
+Address or name of remote host []? 192.168.0.64
+Destination filename [NY_R1-confg]? 
+
+KRON -> AUTOMATICO
+(config)#kron policy-list backucisco    -> guarda configuração com esse comando
+(config-kron-policy)#cli show run | redirect tftp://192.168.0.64/<nomearquivo> -> redirecionando as configurações para um arquivo
+(config)#kron occurrence backupciscotime in 1 recurring -> a cada 1min faz backup (depende da necessidade e politica da empresa)
+(config-kron-ocurrency)policy-list backupcisco -> 'Quem ele vai executar de 1 em 1 minuto'
+
+show kron schedule - > mostra o tempo para o backup
+
+ARCHIVE -> VOCE CONSEGUE GUARDAR VERSOES, AO CONTRARIO DO KRON QUE SUBSTITUI
+(config)#archive
+(config-archive)#log config -> Por exemplo voce pode armazenar as mensagens de configuração
+(config-archive-log-cfg)#logging enable -> tudo que tiver dentro do arquivo de loguin ira armazenar.
+
+(config-archive)#path tftp <servidor tftp>/$h -> local de armazenagem com hora data 
+(config-archive)#write-memory - > salve sempre uma versao diferente
+(config-archive)#time-period 1
+
+# ATUALIZAÇÃO IOS
+É recomendavel fazer um backup da memoria flash
+NY_R1#show flash -> mostra a memoria flash
+NY_R1#delete flash <nome flash> -> Opcinal: deletar memoria flash atual
+Apos copiar a nova memoria flash, salvar e reiniciar o equipamento para entrar em vigor
+
+Caso haja mais de um flash na memoria, definir com:
+(config)boot system flash <nome flash>
+
