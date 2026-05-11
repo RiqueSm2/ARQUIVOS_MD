@@ -40,3 +40,25 @@ __CONEXAO NO SWITCH__
 
 NY_R1#ssh -l henrique 192.168.10.2
           'L' USER      IP
+
+# SWITCH LAYER 2 
+* O switch de LAYER 2 é um dispositivo de rede que opera na camada de enlace de dados do modelo OSI. Ele é responsável por encaminhar os quadros de dados com base nos endereços MAC (Media Access Control) dos dispositivos conectados a ele.'
+
+# SWITCH LAYER 3
+* O switch de LAYER 3 é um dispositivo de rede que opera na camada de rede do modelo OSI. Ele é capaz de encaminhar pacotes de dados com base nos endereços IP, além de realizar funções de roteamento. 
+
+# VLANS
+show vlan brief -> Exibe as VLANs configuradas no switch, mostrando o ID da VLAN, nome, status e as portas associadas a cada VLAN.
+
+VLAN (Virtual LAN) é uma forma de dividir um switch físico em várias redes lógicas independentes.
+Dispositivos na mesma VLAN conseguem se comunicar diretamente.
+Dispositivos em VLANs diferentes precisam de um roteador ou switch camada 3 para conversar.
+Ela é usada para:
+
+- separar setores,
+
+- aumentar segurança,
+
+- organizar a rede,
+
+- reduzir tráfego desnecessário.

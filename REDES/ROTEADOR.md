@@ -81,3 +81,6 @@ NY_R1(config-if)#ipv6 address 2001:0db8:3c4d:0015:0000:0000:1a2f:1a2b/64
 Ativando UNICAST
 IPV6 UNICAST ROUTING
 IPV6 ROUTE  <IPV6 DESTINO> <PREFIXO> <IPV6 PROXIMO SALTO OU INTERFACE DE SAIDA>
+
+# MOSTRAR ENDEREÇO MAC
+NY_SW1#show mac address-table  -> Exibe a tabela de endereços MAC do switch, mostrando quais dispositivos estão conectados a quais portas.
